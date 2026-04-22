@@ -24,7 +24,30 @@ text-shadow:
 6px 6px 0 #ff66b2,
 8px 8px 10px rgba(0,0,0,0.3);
 }
+<script>
 
+/* Typing effect */
+
+let msg = "Happy Birthday Mahesh Babu ❤️";
+let i = 0;
+
+function typing(){
+
+if(i < msg.length){
+
+document.getElementById("text").innerHTML += msg.charAt(i);
+
+i++;
+
+setTimeout(typing,80);
+
+}
+
+}
+
+typing();
+
+</script>
 /* Button */
 
 button{
