@@ -1,18 +1,61 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
-<title>Happy Birthday BABU</title>
+<title>Happy Birthday</title>
 
 <style>
 
 body{
-margin:0;
 background:pink;
 text-align:center;
 font-family:Arial;
 overflow-x:hidden;
+}
+
+/* Heading */
+
+h1{
+margin-top:40px;
+}
+
+/* Button */
+
+button{
+padding:12px 25px;
+font-size:18px;
+background:red;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* Gallery */
+
+.gallery{
+display:none;
+margin-top:30px;
+}
+
+/* Images */
+
+.gallery img{
+width:260px;
+border-radius:20px;
+animation:breathing 4s infinite ease-in-out;
+}
+
+/* Breathing zoom */
+
+@keyframes breathing{
+
+0%{transform:scale(1);}
+
+50%{transform:scale(1.1);}
+
+100%{transform:scale(1);}
+
 }
 
 /* Floating hearts */
@@ -29,57 +72,15 @@ animation:float 6s linear infinite;
 100%{transform:translateY(-1000px);}
 }
 
-/* Heading */
-
-h1{
-margin-top:120px;
-font-size:50px;
-}
-
-/* Button */
-
-button{
-padding:15px 35px;
-font-size:22px;
-background:red;
-color:white;
-border:none;
-border-radius:12px;
-cursor:pointer;
-}
-
-/* Gallery */
-
-.gallery{
-display:none;
-margin-top:40px;
-}
-
-.gallery img{
-width:350px;
-margin:15px;
-border-radius:20px;
-animation:zoom 4s infinite;
-transition:0.6s;
-}
-/* Zoom animation */
-@keyframes zoom{
-0%{transform:scale(1);}
-50%{transform:scale(1.2);}
-100%{transform:scale(1);}  
-}
-
 </style>
 
 </head>
 
 <body>
 
-
-<h1 id="text"></h1>
+<h1>Happy Birthday Mahesh Babu ❤️</h1>
 
 <button onclick="start()">PLZ CLICK BUTTON 🎉</button>
-
 
 <div class="gallery" id="gallery">
 
@@ -93,93 +94,15 @@ transition:0.6s;
 
 <script>
 
-/* Typing effect */
-
-let msg = "Happy Birthday Mahesh Babu TO YOU ❤️";
-let i = 0;
-
-function typing(){
-
-if(i < msg.length){
-
-document.getElementById("text").innerHTML += msg.charAt(i);
-
-i++;
-
-setTimeout(typing,80);
-
-}
-
-}
-
-typing();
-
-
-/* Start button */
+/* Button click */
 
 function start(){
 
-let images = document.querySelectorAll(".gallery img");
-let index = 0;
-
-setInterval(()=>{
-
-images.forEach((img)=>{
-img.style.display="none";
-});
-
-images[index].style.display="block";
-
-index++;
-
-if(index >= images.length){
-index = 0;
-}
-
-},2500);
+document.getElementById("gallery").style.display="block";
 
 }
 
-
-/* Floating hearts */
-
-setInterval(function(){
-
-let butterfly = document.createElement("div");
-
-butterfly.className="heart";
-
-butterfly.innerHTML="🦋";
-
-butterfly.style.left=Math.random()*100+"%";
-
-document.body.appendChild(butterfly);
-
-setTimeout(()=>{
-butterfly.remove();
-},6000);
-
-},1200);
-
-setInterval(function(){
-
-let heart = document.createElement("div");
-
-heart.className="heart";
-
-let hearts = ["❤️","💖","💗","💕"];
-
-heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
-
-heart.style.left=Math.random()*100+"%";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},6000);
-
-},500);
+/* Floating hearts + butterflies + flowers */
 
 setInterval(function(){
 
@@ -203,7 +126,5 @@ heart.remove();
 
 </script>
 
-
 </body>
-
 </html>
