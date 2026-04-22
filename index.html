@@ -10,7 +10,7 @@ body{
 background:pink;
 text-align:center;
 font-family:Arial;
-overflow-x:hidden;
+overflow:hidden;
 }
 
 /* Heading */
@@ -22,7 +22,7 @@ margin-top:40px;
 /* Button */
 
 button{
-padding:12px 25px;
+padding:12px 30px;
 font-size:18px;
 background:red;
 color:white;
@@ -31,17 +31,15 @@ border-radius:10px;
 cursor:pointer;
 }
 
-/* Gallery */
+/* Slideshow */
 
-.gallery{
+.slideshow{
 display:none;
-margin-top:30px;
+margin-top:40px;
 }
 
-/* Images */
-
-.gallery img{
-width:260px;
+.slideshow img{
+width:320px;
 border-radius:20px;
 animation:breathing 4s infinite ease-in-out;
 }
@@ -52,15 +50,15 @@ animation:breathing 4s infinite ease-in-out;
 
 0%{transform:scale(1);}
 
-50%{transform:scale(1.1);}
+50%{transform:scale(1.12);}
 
 100%{transform:scale(1);}
 
 }
 
-/* Floating hearts */
+/* Floating icons */
 
-.heart{
+.icon{
 position:fixed;
 bottom:-20px;
 font-size:25px;
@@ -82,44 +80,67 @@ animation:float 6s linear infinite;
 
 <button onclick="start()">PLZ CLICK BUTTON 🎉</button>
 
-<div class="gallery" id="gallery">
+<div class="slideshow" id="slideshow">
 
-<img src="mahesh babu.jpg">
-<img src="mahesh babu1.jpg">
-<img src="mahesh babu2.jpg">
-<img src="mahesh babu3.jpg">
+<img id="slide" src="mahesh babu.jpg">
 
 </div>
 
-
 <script>
+
+/* Photos list */
+
+let photos = [
+"mahesh babu.jpg",
+"mahesh babu1.jpg",
+"mahesh babu2.jpg",
+"mahesh babu3.jpg"
+];
+
+let index = 0;
 
 /* Button click */
 
 function start(){
 
-document.getElementById("gallery").style.display="block";
+document.getElementById("slideshow").style.display="block";
+
+setInterval(changePhoto,3000);
 
 }
 
-/* Floating hearts + butterflies + flowers */
+/* Slideshow */
+
+function changePhoto(){
+
+index++;
+
+if(index >= photos.length){
+index = 0;
+}
+
+document.getElementById("slide").src = photos[index];
+
+}
+
+/* Floating hearts butterflies flowers */
 
 setInterval(function(){
 
-let heart = document.createElement("div");
+let icon = document.createElement("div");
 
-heart.className="heart";
+icon.className="icon";
 
 let icons = ["❤️","💖","💗","🦋","🌸","🌺"];
 
-heart.innerHTML = icons[Math.floor(Math.random()*icons.length)];
+icon.innerHTML = icons[Math.floor(Math.random()*icons.length)];
 
-heart.style.left=Math.random()*100+"%";
+icon.style.left=Math.random()*100+"%";
 
-document.body.appendChild(heart);
+document.body.appendChild(icon);
 
 setTimeout(()=>{
-heart.remove();
+icon.remove();
 },6000);
 
 },500);
