@@ -77,19 +77,32 @@ animation:zoom 3s infinite;
 /* Quote Section */
 
 .quote{
+display:none;
 margin-top:600px;
 padding:30px;
-width:100%;
+width:80%;
 margin-left:auto;
 margin-right:auto;
-background:rgba(255,255,255,0.4);
-backdrop-filter:blur(10px);
-border-radius:20px;
-font-size:22px;
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(15px);
+border-radius:25px;
+border:1px solid rgba(255,255,255,0.4);
+font-size:24px;
 font-style:italic;
+box-shadow:0 8px 32px rgba(0,0,0,0.25);
+position:relative;
 }
 
-/* Floating items */
+/* Quote Title */
+
+.quote h2{
+font-size:36px;
+margin-bottom:20px;
+color:#ff2d75;
+text-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Floating icons */
 
 .icon{
 position:fixed;
@@ -124,15 +137,15 @@ Today is all about celebrating you
 <img id="slide">
 </div>
 
-<div class="quote">
+<div class="quote" id="quote">
 
-💫 A Special Quote 💫
+<h2>💫 A Special Quote 💫</h2>
 
-<br><br>
-
+<p>
 "Your style is timeless,<br>
 Your charm is forever,<br>
 Prince of Tollywood – Mahesh Babu 👑"
+</p>
 
 </div>
 
@@ -176,6 +189,8 @@ function start(){
 document.querySelector("button").style.display="none";
 
 document.getElementById("gallery").style.display="block";
+
+document.getElementById("quote").style.display="block";
 
 document.getElementById("slide").src=photos[0];
 
