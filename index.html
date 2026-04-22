@@ -49,18 +49,20 @@ cursor:pointer;
 }
 
 /* Gallery */
-
-.gallery{
+..gallery{
 display:none;
 margin-top:40px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+justify-items:center;
 }
 
 .gallery img{
-width:350px;
-margin:15px;
+width:180px;
 border-radius:20px;
-animation:zoom 4s infinite;
-transition:0.6s;
+animation:zoom 6s infinite ease-in-out;
+}  
 }
 /* Zoom animation */
 @keyframes zoom{
