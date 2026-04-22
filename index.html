@@ -1,42 +1,69 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Celebration</title>
+
+<title>Happy Birthday</title>
 
 <style>
 
 body{
-background:#ffc0cb;
+margin:0;
+background:pink;
 text-align:center;
 font-family:Arial;
-margin:0;
+overflow-x:hidden;
 }
+
+/* Floating hearts */
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:25px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-1000px);}
+}
+
+/* Heading */
 
 h1{
-margin-top:50px;
-font-size:40px;
-}
-
-/* slideshow image */
-
-#photo{
-width:400px;
-border-radius:15px;
-margin-top:40px;
-animation:zoom 3s infinite alternate;
-}
-
-@keyframes zoom{
-0%{transform:scale(1);}
-100%{transform:scale(1.1);}
-}
-
-/* messages */
-
-.section{
 margin-top:120px;
-font-size:25px;
-padding:40px;
+font-size:50px;
+}
+
+/* Button */
+
+button{
+padding:15px 35px;
+font-size:22px;
+background:red;
+color:white;
+border:none;
+border-radius:12px;
+cursor:pointer;
+}
+
+/* Gallery */
+
+.gallery{
+display:none;
+margin-top:40px;
+}
+
+.gallery img{
+width:300px;
+border-radius:20px;
+margin:20px;
+transition:0.6s;
+}
+
+.gallery img:hover{
+transform:scale(1.2);
 }
 
 </style>
@@ -45,47 +72,78 @@ padding:40px;
 
 <body>
 
-<h1>🎉 Let the Celebration Begin 🎉</h1>
 
-<img id="photo" src="mahesh babu.jpg">
+<h1 id="text"></h1>
+
+<button onclick="start()">Start the Celebration 🎉</button>
+
+
+<div class="gallery" id="gallery">
+
+<img src="mahesh babu.jpg">
+<img src="mahesh babu1.jpg">
+<img src="mahesh babu2.jpg">
+<img src="mahesh babu3.jpg">
+
+</div>
+
 
 <script>
 
-let pics=[
-"mahesh babu.jpg",
-"mahesh babu1.jpg",
-"mahesh babu2.jpg",
-"mahesh babu3.jpg"
-];
+/* Typing effect */
 
-let i=0;
+let msg = "Happy Birthday Mahesh Babu ❤️";
+let i = 0;
+
+function typing(){
+
+if(i < msg.length){
+
+document.getElementById("text").innerHTML += msg.charAt(i);
+
+i++;
+
+setTimeout(typing,80);
+
+}
+
+}
+
+typing();
+
+
+/* Start button */
+
+function start(){
+
+document.getElementById("gallery").style.display="block";
+
+}
+
+
+/* Floating hearts */
 
 setInterval(function(){
 
-i++;
-if(i>=pics.length){i=0;}
+let heart = document.createElement("div");
 
-document.getElementById("photo").src=pics[i];
+heart.className="heart";
 
-},3000);
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"%";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+},500);
 
 </script>
 
-<div class="section">
-💖 Wishing you a day filled with happiness
-</div>
-
-<div class="section">
-🎂 May your birthday be as special as you
-</div>
-
-<div class="section">
-✨ Have an amazing year ahead
-</div>
-
-<div class="section">
-🎉 Happy Birthday once again
-</div>
 
 </body>
+
 </html>
