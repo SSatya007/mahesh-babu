@@ -72,17 +72,14 @@ transition:0.6s;
 </style>
 
 </head>
+
 <body>
+
 
 <h1 id="text"></h1>
 
-<button id="startBtn" onclick="start()">Start the Celebration 🎉</button>
+<button onclick="start()">PLZ CLICK BUTTON 🎉</button>
 
-<!-- Butterflies ikkada pettali -->
-
-<div class="butterfly" style="animation-delay:0s">🦋</div>
-<div class="butterfly" style="animation-delay:3s">🦋</div>
-<div class="butterfly" style="animation-delay:6s">🦋</div>
 
 <div class="gallery" id="gallery">
 
@@ -92,8 +89,6 @@ transition:0.6s;
 <img src="mahesh babu3.jpg">
 
 </div>
-
-</body>
 
 
 <script>
@@ -130,6 +125,24 @@ document.getElementById("gallery").style.display="block";
 
 
 /* Floating hearts */
+
+setInterval(function(){
+
+let butterfly = document.createElement("div");
+
+butterfly.className="heart";
+
+butterfly.innerHTML="🦋";
+
+butterfly.style.left=Math.random()*100+"%";
+
+document.body.appendChild(butterfly);
+
+setTimeout(()=>{
+butterfly.remove();
+},6000);
+
+},1200);
 
 setInterval(function(){
 
