@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <title>Happy Birthday</title>
@@ -7,35 +8,146 @@
 <style>
 
 body{
-background:pink;
+margin:0;
+padding:0;
 text-align:center;
 font-family:Arial;
-overflow:hidden;
+background:linear-gradient(135deg,#f7b2c4,#d6b3ff);
+overflow-x:hidden;
 }
 
-/* Heading */
+/* 3D Heading */
 
 h1{
 font-size:55px;
+margin-top:80px;
 color:#ff0066;
 text-shadow:
 2px 2px 0 #fff,
 4px 4px 0 #ff99cc,
 6px 6px 0 #ff66b2,
-8px 8px 10px rgba(0,0,0,0.3);
+8px 8px 12px rgba(0,0,0,0.3);
 }
+
+/* Subtitle */
+
+.subtitle{
+font-size:20px;
+margin-bottom:30px;
+}
+
+/* Button */
+
+button{
+padding:12px 25px;
+font-size:18px;
+background:#ff0066;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+box-shadow:0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* Slideshow */
+
+.gallery{
+display:none;
+margin-top:40px;
+}
+
+.gallery img{
+width:350px;
+border-radius:20px;
+animation:zoom 3s infinite;
+}
+
+/* Breathing zoom */
+
+@keyframes zoom{
+
+0%{transform:scale(1);}
+
+50%{transform:scale(1.1);}
+
+100%{transform:scale(1);}
+
+}
+
+/* Quote Section */
+
+.quote{
+margin-top:120px;
+padding:40px;
+width:80%;
+margin-left:auto;
+margin-right:auto;
+background:rgba(255,255,255,0.4);
+backdrop-filter:blur(10px);
+border-radius:20px;
+font-size:22px;
+font-style:italic;
+}
+
+/* Floating items */
+
+.icon{
+position:fixed;
+bottom:-50px;
+font-size:26px;
+animation:floatUp 8s linear infinite;
+}
+
+@keyframes floatUp{
+
+0%{transform:translateY(0);}
+
+100%{transform:translateY(-100vh);}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1 id="text"></h1>
+
+<p class="subtitle">
+Today is all about celebrating you
+</p>
+
+<button onclick="start()">Start The Celebration 🎉</button>
+
+<div class="gallery" id="gallery">
+<img id="slide">
+</div>
+
+<div class="quote">
+
+💫 A Special Quote 💫
+
+<br><br>
+
+"Your style is timeless,<br>
+Your charm is forever,<br>
+Prince of Tollywood – Mahesh Babu 👑"
+
+</div>
+
 <script>
 
 /* Typing effect */
 
-let msg = "Happy Birthday Mahesh Babu ❤️";
-let i = 0;
+let msg="Happy Birthday Mahesh Babu ❤️";
+let i=0;
 
 function typing(){
 
-if(i < msg.length){
+if(i<msg.length){
 
-document.getElementById("text").innerHTML += msg.charAt(i);
+document.getElementById("text").innerHTML+=msg.charAt(i);
 
 i++;
 
@@ -47,134 +159,69 @@ setTimeout(typing,80);
 
 typing();
 
-</script>
-/* Button */
 
-button{
-padding:12px 30px;
-font-size:18px;
-background:red;
-color:white;
-border:none;
-border-radius:10px;
-cursor:pointer;
-}
+/* Photos */
 
-/* Slideshow */
-
-.slideshow{
-display:none;
-margin-top:40px;
-}
-
-.slideshow img{
-width:320px;
-border-radius:20px;
-animation:breathing 4s infinite ease-in-out;
-}
-
-/* Breathing zoom */
-
-@keyframes breathing{
-
-0%{transform:scale(1);}
-
-50%{transform:scale(1.12);}
-
-100%{transform:scale(1);}
-
-}
-
-/* Floating icons */
-
-.icon{
-position:fixed;
-bottom:-20px;
-font-size:25px;
-animation:float 6s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0);}
-100%{transform:translateY(-1000px);}
-}
-
-</style>
-
-</head>
-
-<body>
-
-<h1>Happy Birthday Mahesh Babu ❤️</h1>
-
-<button onclick="start()">PLZ CLICK BUTTON 🎉</button>
-
-<div class="slideshow" id="slideshow">
-
-<img id="slide" src="mahesh babu.jpg">
-
-</div>
-
-<script>
-
-/* Photos list */
-
-let photos = [
+let photos=[
 "mahesh babu.jpg",
 "mahesh babu1.jpg",
 "mahesh babu2.jpg",
 "mahesh babu3.jpg"
 ];
 
-let index = 0;
-
-/* Button click */
+let index=0;
 
 function start(){
 
-document.getElementById("slideshow").style.display="block";
+document.querySelector("button").style.display="none";
 
-setInterval(changePhoto,3000);
+document.getElementById("gallery").style.display="block";
+
+document.getElementById("slide").src=photos[0];
+
+setInterval(nextPhoto,1500);
 
 }
 
-/* Slideshow */
-
-function changePhoto(){
+function nextPhoto(){
 
 index++;
 
-if(index >= photos.length){
-index = 0;
+if(index>=photos.length){
+index=0;
 }
 
-document.getElementById("slide").src = photos[index];
+document.getElementById("slide").src=photos[index];
 
 }
 
-/* Floating hearts butterflies flowers */
+
+/* Floating icons */
 
 setInterval(function(){
 
-let icon = document.createElement("div");
+let icon=document.createElement("div");
 
 icon.className="icon";
 
-let icons = ["❤️","💖","💗","🦋","🌸","🌺"];
+let icons=["❤️","💖","🦋","🌸","🌺"];
 
-icon.innerHTML = icons[Math.floor(Math.random()*icons.length)];
+icon.innerHTML=icons[Math.floor(Math.random()*icons.length)];
 
 icon.style.left=Math.random()*100+"%";
 
 document.body.appendChild(icon);
 
 setTimeout(()=>{
-icon.remove();
-},6000);
 
-},500);
+icon.remove();
+
+},8000);
+
+},700);
 
 </script>
 
 </body>
+
 </html>
