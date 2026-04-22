@@ -164,6 +164,26 @@ heart.remove();
 
 },500);
 
+setInterval(function(){
+
+let heart = document.createElement("div");
+
+heart.className="heart";
+
+let icons = ["❤️","💖","💗","🦋","🌸","🌺"];
+
+heart.innerHTML = icons[Math.floor(Math.random()*icons.length)];
+
+heart.style.left=Math.random()*100+"%";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+},500);
+
 </script>
 
 
